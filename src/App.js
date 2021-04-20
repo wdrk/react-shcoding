@@ -21,6 +21,17 @@ class TOC extends Component {
   }
 }
 
+class Content extends Component {
+  render() {
+    return (
+      <article>
+        <h2>HTML</h2>
+        HTML is HyperText Markup Language.
+      </article>
+    );
+  }
+}
+
 class Subject extends Component {
   render() {
     return (
@@ -37,6 +48,7 @@ class App extends Component {
       <div className='App'>
         <Subject></Subject>
         <TOC></TOC>
+        <Content></Content>
       </div>
     );
   }
