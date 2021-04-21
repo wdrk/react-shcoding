@@ -30,7 +30,7 @@ class App extends Component {
           title={this.state.subject.title}
           sub={this.state.subject.sub}
         ></Subject>
-        <TOC date={this.state.toc}></TOC>
+        <TOC data={this.state.toc}></TOC>
         <Content
           title={this.state.content.title}
           desc={this.state.content.desc}

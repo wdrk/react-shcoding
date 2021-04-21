@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 export default class TOC extends Component {
   render() {
     let lists = [];
-    for (let i in this.props.data) {
+    const data = this.props.data;
+    for (let i in data) {
       lists.push(
         <li>
-          <a href={this.props.data[i].id}>{this.props.data[i].title}</a>
+          <a href={data[i].id}>{data[i].title}</a>
         </li>
       );
     }
