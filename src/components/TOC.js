@@ -1,20 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class TOC extends Component {
   render() {
+    let lists = [];
+    for (let i in this.props.data) {
+      lists.push(
+        <li>
+          <a href={this.props.data[i].id}>{this.props.data[i].title}</a>
+        </li>
+      );
+    }
     return (
       <nav>
-        <ul>
-          <li>
-            <a href='1.html'>HTML</a>
-          </li>
-          <li>
-            <a href='2.html'>CSS</a>
-          </li>
-          <li>
-            <a href='3.html'>JavaScript</a>
-          </li>
-        </ul>
+        <ul>{lists}</ul>
       </nav>
     );
   }
