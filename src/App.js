@@ -12,6 +12,11 @@ class App extends Component {
         title: 'WEB',
         sub: 'World Wide Web!',
       },
+      toc: [
+        { id: 1, title: 'HTML', desc: 'HTML is for information' },
+        { id: 2, title: 'CSS', desc: 'CSS is for design' },
+        { id: 3, title: 'JavaScript', desc: 'JavaScript is for interactive' },
+      ],
       content: {
         title: 'HTML',
         desc: 'HTML is HyperText Markup Language.',
