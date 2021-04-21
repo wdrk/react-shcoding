@@ -6,7 +6,7 @@ export default class TOC extends Component {
     const data = this.props.data;
     for (let i in data) {
       lists.push(
-        <li>
+        <li key={data[i].id}>
           <a href={data[i].id}>{data[i].title}</a>
         </li>
       );
