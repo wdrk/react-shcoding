@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mod: 'read',
+      mode: 'read',
       welcome: {
         title: 'Welcome',
         desc: 'Hello, React!',
@@ -31,10 +31,10 @@ class App extends Component {
   render() {
     let _title = null;
     let _desc = null;
-    if (this.state.mod === 'welcome') {
+    if (this.state.mode === 'welcome') {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
-    } else if (this.state.mod === 'read') {
+    } else if (this.state.mode === 'read') {
       _title = this.state.toc[0].title;
       _desc = this.state.toc[0].desc;
     }
@@ -48,7 +48,10 @@ class App extends Component {
               onClick={function (e) {
                 console.log(e);
                 e.preventDefault();
-              }}
+                this.setState({
+                  mode: 'welcome',
+                });
+              }.bind(this)}
             >
               {this.state.subject.title}
             </a>
