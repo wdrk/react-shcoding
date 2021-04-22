@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       mode: 'read',
+      selectedContentId: 2,
       welcome: {
         title: 'Welcome',
         desc: 'Hello, React!',
@@ -35,21 +36,29 @@ class App extends Component {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
     } else if (this.state.mode === 'read') {
-      _title = this.state.toc[0].title;
-      _desc = this.state.toc[0].desc;
+      _title = this.state.toc[this.state.selectedContentId].title;
+      _desc = this.state.toc[this.state.selectedContentId].desc;
     }
     return (
       <div className="App">
         <Subject
           title={this.state.subject.title}
           sub={this.state.subject.sub}
-          onChangePage={() =>
+          onChangePage={(dataId) =>
             this.setState({
               mode: 'welcome',
             })
           }
         ></Subject>
-        <TOC data={this.state.toc}></TOC>
+        <TOC
+          onChangePage={(id) => {
+            this.setState({
+              mode: 'read',
+              selectedContentId: id,
+            });
+          }}
+          data={this.state.toc}
+        ></TOC>
         <Content title={_title} desc={_desc}></Content>
       </div>
     );
