@@ -2,7 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Subject from './components/Subject';
 import TOC from './components/TOC';
-import Content from './components/Content';
+import ReadContent from './components/ReadContent';
 import Control from './components/Control';
 
 class App extends Component {
@@ -67,7 +67,7 @@ class App extends Component {
             });
           }}
         ></Control>
-        <Content title={_title} desc={_desc}></Content>
+        <ReadContent title={_title} desc={_desc}></ReadContent>
       </div>
     );
   }
