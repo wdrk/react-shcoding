@@ -43,6 +43,8 @@ class App extends Component {
       _title = this.state.toc[this.state.selectedContentId].title;
       _desc = this.state.toc[this.state.selectedContentId].desc;
       _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
+    } else if (this.state.mode === 'create') {
+      _article = <CreateContent title={_title} desc={_desc}></CreateContent>;
     }
     return (
       <div className="App">
