@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Subject from './components/Subject';
 import TOC from './components/TOC';
 import Content from './components/Content';
+import Control from './components/Control';
 
 class App extends Component {
   constructor(props) {
@@ -59,6 +60,13 @@ class App extends Component {
           }}
           data={this.state.toc}
         ></TOC>
+        <Control
+          onChangeMode={(controlMode) => {
+            this.setState({
+              mode: controlMode,
+            });
+          }}
+        ></Control>
         <Content title={_title} desc={_desc}></Content>
       </div>
     );
