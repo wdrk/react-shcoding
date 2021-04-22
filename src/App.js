@@ -44,7 +44,7 @@ class App extends Component {
         <Subject
           title={this.state.subject.title}
           sub={this.state.subject.sub}
-          onChangePage={(dataId) =>
+          onChangePage={() =>
             this.setState({
               mode: 'welcome',
             })

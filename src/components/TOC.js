@@ -9,6 +9,7 @@ export default class TOC extends Component {
         <li key={data[i].id}>
           <a
             href={`/content/${data[i].id}`}
+            // data- 형식으로 속성이름을 정하면 target.dataset으로 접근할 수 있다.
             // data-id={data[i].id}
             onClick={(event) => {
               event.preventDefault();
