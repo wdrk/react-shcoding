@@ -1,5 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
+import Subject from './components/Subject';
 import TOC from './components/TOC';
 import Content from './components/Content';
 
@@ -37,25 +38,17 @@ class App extends Component {
       _title = this.state.toc[0].title;
       _desc = this.state.toc[0].desc;
     }
-
     return (
       <div className="App">
-        <header>
-          <h1>
-            <a
-              href="/"
-              onClick={(event) => {
-                event.preventDefault();
-                this.setState({
-                  mode: 'welcome',
-                });
-              }}
-            >
-              {this.state.subject.title}
-            </a>
-          </h1>
-          {this.state.subject.sub}
-        </header>
+        <Subject
+          title={this.state.subject.title}
+          sub={this.state.subject.sub}
+          onChangePage={() =>
+            this.setState({
+              mode: 'welcome',
+            })
+          }
+        ></Subject>
         <TOC data={this.state.toc}></TOC>
         <Content title={_title} desc={_desc}></Content>
       </div>
