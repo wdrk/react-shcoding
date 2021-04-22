@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Subject from './components/Subject';
 import TOC from './components/TOC';
 import ReadContent from './components/ReadContent';
+import CreateContent from './components/CreateContent';
 import Control from './components/Control';
 
 class App extends Component {
@@ -33,12 +34,15 @@ class App extends Component {
   render() {
     let _title = null;
     let _desc = null;
+    let _article = null;
     if (this.state.mode === 'welcome') {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
+      _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
     } else if (this.state.mode === 'read') {
       _title = this.state.toc[this.state.selectedContentId].title;
       _desc = this.state.toc[this.state.selectedContentId].desc;
+      _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
     }
     return (
       <div className="App">
@@ -67,7 +71,7 @@ class App extends Component {
             });
           }}
         ></Control>
-        <ReadContent title={_title} desc={_desc}></ReadContent>
+        {_article}
       </div>
     );
   }
