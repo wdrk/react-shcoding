@@ -1,7 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
 import TOC from './components/TOC';
-import Subject from './components/Subject';
 import Content from './components/Content';
 
 class App extends Component {
@@ -45,13 +44,12 @@ class App extends Component {
           <h1>
             <a
               href="/"
-              onClick={function (e) {
-                console.log(e);
-                e.preventDefault();
+              onClick={(event) => {
+                event.preventDefault();
                 this.setState({
                   mode: 'welcome',
                 });
-              }.bind(this)}
+              }}
             >
               {this.state.subject.title}
             </a>
