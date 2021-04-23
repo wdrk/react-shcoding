@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 
 export default class UpdateContent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: this.props.data.title,
+    };
+  }
   render() {
-    console.log(this.props.data);
     return (
       <article>
         <h2>Update</h2>
@@ -18,7 +23,15 @@ export default class UpdateContent extends Component {
           }}
         >
           <p>
-            <input type="text" name="title" placeholder="title"></input>
+            <input
+              type="text"
+              name="title"
+              placeholder="title"
+              value={this.state.title}
+              onChange={function (event) {
+                this.setState({ title: event.target.value });
+              }.bind(this)}
+            ></input>
           </p>
           <p>
             <textarea name="desc" placeholder="description"></textarea>
