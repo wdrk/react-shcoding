@@ -35,6 +35,7 @@ class App extends Component {
   getReadContent() {
     return (
       <ReadContent
+        id={this.state.toc[this.state.selectedContentId].id}
         title={this.state.toc[this.state.selectedContentId].title}
         desc={this.state.toc[this.state.selectedContentId].desc}
       ></ReadContent>
@@ -42,13 +43,14 @@ class App extends Component {
   }
 
   getContent() {
-    let _title = null;
-    let _desc = null;
     let _article = null;
     if (this.state.mode === 'welcome') {
-      _title = this.state.welcome.title;
-      _desc = this.state.welcome.desc;
-      _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
+      _article = (
+        <ReadContent
+          title={this.state.welcome.title}
+          desc={this.state.welcome.desc}
+        ></ReadContent>
+      );
     } else if (this.state.mode === 'read') {
       _article = this.getReadContent();
     } else if (this.state.mode === 'create') {
@@ -68,6 +70,7 @@ class App extends Component {
     } else if (this.state.mode === 'update') {
       _article = (
         <UpdateContent
+          data={this.getReadContent().props}
           onSubmit={(_title, _desc) => {
             this.setState({
               toc: this.state.toc.concat({
