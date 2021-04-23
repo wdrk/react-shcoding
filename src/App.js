@@ -1,5 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
+import UpdateContent from './components/UpdateContent';
 import Subject from './components/Subject';
 import TOC from './components/TOC';
 import ReadContent from './components/ReadContent';
@@ -31,7 +32,16 @@ class App extends Component {
       },
     };
   }
-  render() {
+  getReadContent() {
+    return (
+      <ReadContent
+        title={this.state.toc[this.state.selectedContentId].title}
+        desc={this.state.toc[this.state.selectedContentId].desc}
+      ></ReadContent>
+    );
+  }
+
+  getContent() {
     let _title = null;
     let _desc = null;
     let _article = null;
@@ -40,9 +50,7 @@ class App extends Component {
       _desc = this.state.welcome.desc;
       _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
     } else if (this.state.mode === 'read') {
-      _title = this.state.toc[this.state.selectedContentId].title;
-      _desc = this.state.toc[this.state.selectedContentId].desc;
-      _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
+      _article = this.getReadContent();
     } else if (this.state.mode === 'create') {
       _article = (
         <CreateContent
@@ -57,7 +65,24 @@ class App extends Component {
           }}
         ></CreateContent>
       );
+    } else if (this.state.mode === 'update') {
+      _article = (
+        <UpdateContent
+          onSubmit={(_title, _desc) => {
+            this.setState({
+              toc: this.state.toc.concat({
+                id: this.state.toc.length + 1,
+                title: _title,
+                desc: _desc,
+              }),
+            });
+          }}
+        ></UpdateContent>
+      );
     }
+    return _article;
+  }
+  render() {
     return (
       <div className="App">
         <Subject
@@ -85,7 +110,7 @@ class App extends Component {
             });
           }}
         ></Control>
-        {_article}
+        {this.getContent()}
       </div>
     );
   }
