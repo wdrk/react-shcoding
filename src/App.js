@@ -47,7 +47,13 @@ class App extends Component {
       _article = (
         <CreateContent
           onSubmit={(_title, _desc) => {
-            console.log(_title, _desc);
+            this.setState({
+              toc: this.state.toc.concat({
+                id: this.state.toc.length + 1,
+                title: _title,
+                desc: _desc,
+              }),
+            });
           }}
         ></CreateContent>
       );
