@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class UpdateContent extends Component {
   render() {
-    console.log('UpdateContent render');
+    console.log(this.props.data);
     return (
       <article>
         <h2>Update</h2>
