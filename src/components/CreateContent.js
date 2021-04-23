@@ -10,7 +10,10 @@ export default class CreateContent extends Component {
           method="post"
           onSubmit={(event) => {
             event.preventDefault();
-            alert('submit');
+            this.props.onSubmit(
+              event.target.title.value,
+              event.target.desc.value
+            );
           }}
         >
           <p>

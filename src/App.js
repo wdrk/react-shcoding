@@ -44,7 +44,13 @@ class App extends Component {
       _desc = this.state.toc[this.state.selectedContentId].desc;
       _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
     } else if (this.state.mode === 'create') {
-      _article = <CreateContent title={_title} desc={_desc}></CreateContent>;
+      _article = (
+        <CreateContent
+          onSubmit={(_title, _desc) => {
+            console.log(_title, _desc);
+          }}
+        ></CreateContent>
+      );
     }
     return (
       <div className="App">
