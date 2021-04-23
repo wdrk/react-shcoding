@@ -4,6 +4,7 @@ export default class UpdateContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.data.id,
       title: this.props.data.title,
       desc: this.props.data.desc,
     };
@@ -21,11 +22,13 @@ export default class UpdateContent extends Component {
           onSubmit={(event) => {
             event.preventDefault();
             this.props.onSubmit(
-              event.target.title.value,
-              event.target.desc.value
+              this.state.id,
+              this.state.title,
+              this.state.desc
             );
           }}
         >
+          <input type="hidden" name="id" value={this.state.id}></input>
           <p>
             <input
               type="text"

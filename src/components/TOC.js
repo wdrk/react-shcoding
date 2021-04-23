@@ -17,7 +17,6 @@ export default class TOC extends Component {
             onClick={(event) => {
               event.preventDefault();
               this.props.onChangePage(data[i].id - 1);
-              // this.props.onChangePage(event.target.dataset.id - 1);
             }}
           >
             {data[i].title}

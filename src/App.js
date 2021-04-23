@@ -71,13 +71,15 @@ class App extends Component {
       _article = (
         <UpdateContent
           data={this.getReadContent().props}
-          onSubmit={(_title, _desc) => {
+          onSubmit={(_id, _title, _desc) => {
+            const _toc = Array.from(this.state.toc);
+            _toc[_id - 1] = {
+              id: _id,
+              title: _title,
+              desc: _desc,
+            };
             this.setState({
-              toc: this.state.toc.concat({
-                id: this.state.toc.length + 1,
-                title: _title,
-                desc: _desc,
-              }),
+              toc: _toc,
             });
           }}
         ></UpdateContent>
