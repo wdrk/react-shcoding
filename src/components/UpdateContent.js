@@ -8,6 +8,9 @@ export default class UpdateContent extends Component {
       desc: this.props.data.desc,
     };
   }
+  inputFormHandler = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
   render() {
     return (
       <article>
@@ -29,9 +32,7 @@ export default class UpdateContent extends Component {
               name="title"
               placeholder="title"
               value={this.state.title}
-              onChange={(event) => {
-                this.setState({ title: event.target.value });
-              }}
+              onChange={this.inputFormHandler}
             ></input>
           </p>
           <p>
@@ -39,9 +40,7 @@ export default class UpdateContent extends Component {
               name="desc"
               placeholder="description"
               value={this.state.desc}
-              onChange={(event) => {
-                this.setState({ desc: event.target.value });
-              }}
+              onChange={this.inputFormHandler}
             ></textarea>
           </p>
           <p>
