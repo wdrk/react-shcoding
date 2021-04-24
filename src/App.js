@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mode: 'read',
+      mode: 'welcome',
       selectedContentId: 2,
       welcome: {
         title: 'Welcome',
@@ -112,9 +112,21 @@ class App extends Component {
         ></TOC>
         <Control
           onChangeMode={(controlMode) => {
-            this.setState({
-              mode: controlMode,
-            });
+            if ('delete' === controlMode) {
+              if (window.confirm('really?')) {
+                let _toc = Array.from(this.state.toc);
+                _toc.splice(this.state.selectedContentId, 1);
+                this.setState({
+                  toc: _toc,
+                  mode: 'welcome',
+                });
+                alert('deleted');
+              }
+            } else {
+              this.setState({
+                mode: controlMode,
+              });
+            }
           }}
         ></Control>
         {this.getContent()}
