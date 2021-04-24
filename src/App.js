@@ -63,6 +63,7 @@ class App extends Component {
                 title: _title,
                 desc: _desc,
               }),
+              mode: 'read',
             });
           }}
         ></CreateContent>
@@ -80,6 +81,7 @@ class App extends Component {
             };
             this.setState({
               toc: _toc,
+              mode: 'read',
             });
           }}
         ></UpdateContent>
