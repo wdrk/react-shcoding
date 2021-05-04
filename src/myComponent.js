@@ -14,6 +14,11 @@ class MyComponent extends Component {
 
     return null;
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.value === 10) return false;
+    return true;
+  }
   render() {
     return (
       <div>
