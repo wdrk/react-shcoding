@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import MyName from './MyName.js';
+import Counter from './Counter.js';
 
 class App extends Component {
   render() {
-    return <MyName></MyName>;
+    return <Counter></Counter>;
   }
 }
 
