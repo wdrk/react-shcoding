@@ -20,11 +20,14 @@ class App extends Component {
   };
   render() {
     return (
-      <fragment>
-        <div className="App">안녕하세요!</div>
-        <MyComponent value={this.state.counter} />
-        <button onClick={this.handleClick}>Click Me</button>
-      </fragment>
+      <div>
+        {/* JSX 내부에서 주석을 쓰려면 멀티라인 주석을 중괄호로 감싸면 된다*/}
+        <h1
+          something="dsalfkjdf" // 컴포넌트 안에 이렇게 주석을 쓸 수 있다
+        >
+          리액트
+        </h1>
+      </div>
     );
   }
 }
