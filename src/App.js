@@ -19,15 +19,9 @@ class App extends Component {
     });
   };
   render() {
-    const style = {
-      backgroundColor: 'black',
-      padding: '16px',
-      color: 'white',
-      fontSize: '36px',
-    };
     return (
       <fragment>
-        <div style={style}>안녕하세요!</div>
+        <div className="App">안녕하세요!</div>
         <MyComponent value={this.state.counter} />
         <button onClick={this.handleClick}>Click Me</button>
       </fragment>
