@@ -35,10 +35,22 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Subject
-          title={this.state.subject.title}
-          sub={this.state.subject.sub}
-        ></Subject>
+        <header>
+          <h1>
+            <a
+              href="/"
+              onClick={e => {
+                e.preventDefault(); /* 해당 태그의 동작을 막는 함수 */
+                this.setState({
+                  mode: "welcome",
+                });
+              }}
+            >
+              {this.state.subject.title}
+            </a>
+          </h1>
+          {this.state.subject.sub}
+        </header>
         <TOC data={this.state.contents}></TOC>
         <Content title={_title} desc={_desc}></Content>
       </div>
