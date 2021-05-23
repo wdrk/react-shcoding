@@ -3,6 +3,7 @@ import "./App.css";
 import TOC from "./components/TOC";
 import Content from "./components/Content";
 import Subject from "./components/Subject";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -35,22 +36,15 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <header>
-          <h1>
-            <a
-              href="/"
-              onClick={e => {
-                e.preventDefault(); /* 해당 태그의 동작을 막는 함수 */
-                this.setState({
-                  mode: "welcome",
-                });
-              }}
-            >
-              {this.state.subject.title}
-            </a>
-          </h1>
-          {this.state.subject.sub}
-        </header>
+        <Subject
+          title={this.state.subject.title}
+          sub={this.state.subject.sub}
+          onChangePage={() => {
+            this.setState({
+              mode: "welcome",
+            });
+          }}
+        ></Subject>
         <TOC data={this.state.contents}></TOC>
         <Content title={_title} desc={_desc}></Content>
       </div>
