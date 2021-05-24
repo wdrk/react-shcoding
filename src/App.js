@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import TOC from "./components/TOC";
-import Content from "./components/Content";
-import Subject from "./components/Subject";
+import TOC from "./components/TOC.jsx";
+import Content from "./components/Content.jsx";
+import Subject from "./components/Subject.jsx";
 
 class App extends Component {
   constructor(props) {
@@ -63,6 +63,17 @@ class App extends Component {
           }}
           data={this.state.contents}
         ></TOC>
+        <ul>
+          <li>
+            <a href="">create</a>
+          </li>
+          <li>
+            <a href="">update</a>
+          </li>
+          <li>
+            <input type="button" value="delete" />
+          </li>
+        </ul>
         <Content title={_title} desc={_desc}></Content>
       </div>
     );
