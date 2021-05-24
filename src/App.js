@@ -29,7 +29,17 @@ class App extends Component {
       ],
     };
   }
-  render() {
+  getReadContent() {
+    let i = 0;
+    while (i < this.state.contents.length) {
+      const data = this.state.contents[i];
+      if (data.id === this.state.selected_content_id) {
+        return data;
+      }
+      i++;
+    }
+  }
+  getContent() {
     let _title = null;
     let _desc = null;
     let _article = null;
@@ -38,17 +48,10 @@ class App extends Component {
       _desc = this.state.welcome.desc;
       _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
     } else if (this.state.mode === "read") {
-      let i = 0;
-      while (i < this.state.contents.length) {
-        const data = this.state.contents[i];
-        if (data.id === this.state.selected_content_id) {
-          _title = data.title;
-          _desc = data.desc;
-          break;
-        }
-        i++;
-      }
-      _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
+      const _content = this.getReadContent();
+      _article = (
+        <ReadContent title={_content.title} desc={_content.desc}></ReadContent>
+      );
     } else if (this.state.mode === "create") {
       _article = (
         <CreateContent
@@ -66,22 +69,17 @@ class App extends Component {
         ></CreateContent>
       );
     } else if (this.state.mode === "update") {
+      const _content = this.getReadContent();
       _article = (
         <UpdateContent
-          onSubmit={(_title, _desc) => {
-            this.max_content_id++;
-            const _contents = this.state.contents.concat({
-              id: this.max_content_id,
-              title: _title,
-              desc: _desc,
-            });
-            this.setState({
-              contents: _contents,
-            });
-          }}
+          data={_content}
+          onSubmit={(_title, _desc) => {}}
         ></UpdateContent>
       );
     }
+    return _article;
+  }
+  render() {
     return (
       <div className="App">
         <Subject
@@ -109,7 +107,7 @@ class App extends Component {
             });
           }}
         ></Control>
-        {_article}
+        {this.getContent()}
       </div>
     );
   }
