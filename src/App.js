@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import "./App.css";
 import TOC from "./components/TOC.jsx";
 import ReadContent from "./components/ReadContent.jsx";
+import CreateContent from "./components/CreateContent.jsx";
 import Subject from "./components/Subject.jsx";
 import Control from "./components/Control.jsx";
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.max_content_id = 3;
     this.state = {
-      mode: "read",
+      mode: "create",
       selected_content_id: 2,
       subject: {
         title: "WEB",
@@ -29,9 +31,11 @@ class App extends Component {
   render() {
     let _title = null;
     let _desc = null;
+    let _article = null;
     if (this.state.mode === "welcome") {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
+      _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
     } else if (this.state.mode === "read") {
       let i = 0;
       while (i < this.state.contents.length) {
@@ -43,6 +47,23 @@ class App extends Component {
         }
         i++;
       }
+      _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
+    } else if (this.state.mode === "create") {
+      _article = (
+        <CreateContent
+          onSubmit={(_title, _desc) => {
+            this.max_content_id++;
+            const _contents = this.state.contents.concat({
+              id: this.max_content_id,
+              title: _title,
+              desc: _desc,
+            });
+            this.setState({
+              contents: _contents,
+            });
+          }}
+        ></CreateContent>
+      );
     }
     return (
       <div className="App">
@@ -71,7 +92,7 @@ class App extends Component {
             });
           }}
         ></Control>
-        <ReadContent title={_title} desc={_desc}></ReadContent>
+        {_article}
       </div>
     );
   }
