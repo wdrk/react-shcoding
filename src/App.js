@@ -3,6 +3,7 @@ import "./App.css";
 import TOC from "./components/TOC.jsx";
 import ReadContent from "./components/ReadContent.jsx";
 import CreateContent from "./components/CreateContent.jsx";
+import UpdateContent from "./components/UpdateContent.jsx";
 import Subject from "./components/Subject.jsx";
 import Control from "./components/Control.jsx";
 
@@ -63,6 +64,22 @@ class App extends Component {
             });
           }}
         ></CreateContent>
+      );
+    } else if (this.state.mode === "update") {
+      _article = (
+        <UpdateContent
+          onSubmit={(_title, _desc) => {
+            this.max_content_id++;
+            const _contents = this.state.contents.concat({
+              id: this.max_content_id,
+              title: _title,
+              desc: _desc,
+            });
+            this.setState({
+              contents: _contents,
+            });
+          }}
+        ></UpdateContent>
       );
     }
     return (
