@@ -4,6 +4,7 @@ class UpdateContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.data.id,
       title: this.props.data.title,
       desc: this.props.data.desc,
     };
@@ -24,9 +25,14 @@ class UpdateContent extends Component {
           method="post"
           onSubmit={e => {
             e.preventDefault(); /* form의 action이 가리키는 페이지로 화면을 이동하지 않도록 */
-            this.props.onSubmit(e.target.title.value, e.target.desc.value);
+            this.props.onSubmit(
+              this.state.id,
+              this.state.title,
+              this.state.desc
+            );
           }}
         >
+          <input type="hidden" name="id" value={this.state.id} />
           <p>
             <input
               type="text"
